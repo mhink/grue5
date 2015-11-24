@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: hearthquiz
+  password: password
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: 5
+
+development:
+  <<: *default
+  database: grue5_development
+  port: 5433
+
+test:
+  <<: *default
+  database: grue5_test
+  port: 5433
+
+production:
+  <<: *default
+  database: grue5_production
+  username: <%= ENV['GRUE5_DATABASE_USERNAME'] %>
+  password: <%= ENV['GRUE5_DATABASE_PASSWORD'] %>
